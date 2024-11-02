@@ -4,4 +4,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return "this works"
+
+@app.route('/about')
+def about():
     return render_template('about.html')

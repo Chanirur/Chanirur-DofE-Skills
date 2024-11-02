@@ -3,6 +3,10 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 body {
@@ -20,9 +24,39 @@ body {
 .btn-fill {
     background-color: #2ECC71;
     border: none;
+    margin-right: 20px;
 }
 
 .btn-line {
     border: 2px solid #2ECC71;
     background-color: rgba(00, 00, 00, 0)
+}
+
+.nav-link {
+    display: inline;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    color: #F1F1F1;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px;
+}
+
+.left {
+    flex: 1;
+    text-align: left;
+}
+
+.center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
 }

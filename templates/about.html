@@ -1,17 +1,39 @@
-<!DOCTYPE html>
+{% extends layout.html %}
 
-<html>
-    <head>
-        <title>ex</title>
-        <link rel="stylesheet" href="static\styles.css">
-    </head>
+{% block title %}
+About
+{% endblock %}
 
-    <body>
-        <nav>
-            <div>
-                <button class="btn-nav btn-line">Login</button>
-                <button class="btn-nav btn-fill">Register</button>
-            </div>
-        </nav>
-    </body>
-</html>
+{% block main %}
+<h1>Introduction</h1>
+
+<p>
+    Welcome to my personal finance website, developed as part of the Duke of Edinburgh Award.
+    My goal id to provide an easy to use and accessible personal finance tool to people of all backgrounds.
+</p>
+
+<h1>Why I chose this project</h1>
+
+<p>
+    I chose this project to contribute something meaningful for others. Combining
+    my interest for programming and disire to help others manage their finances,
+    I chose to build this project.
+</p>
+
+<h1>Technologies Used </h1>
+
+<p>
+      This web app is built using industry standard technologies.
+</p>
+
+<ul>
+    <li>Backend: Flask (Python Framework) for handling server-side logic.</li>
+    <li>Database: SQLAlchemy to query a SQLite3 database hosted in the cloud.</li>
+    <li>Frontend: HTML, CSS and JavaScript for a clean and user-friendly interface.</li>
+</ul>
+
+<h1>Get in Touch</h1>
+
+<p>If you have any suggestions, bugs or improvements, please create a github issue <a href="https://github.com/Chanirur/Chanirur-DofE-Skills">here</a></p>
+
+{% endblock %}
