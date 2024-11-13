@@ -50,8 +50,3 @@ def login():
 @app.route('/register')
 def register():
     return "register works"
-
-@app.route('/createdb')
-def create_db():
-    db.create_all()
-    return "db table created"

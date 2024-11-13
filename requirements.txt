@@ -14,9 +14,8 @@ lz4==4.3.3
 Mako==1.3.6
 MarkupSafe==3.0.2
 packaging==24.1
-psycopg2==2.9.10
+PyMySQL==1.1.1
 python-dotenv==1.0.1
 SQLAlchemy==2.0.36
-sqlitecloud==0.0.83
 typing_extensions==4.12.2
 Werkzeug==3.0.4
