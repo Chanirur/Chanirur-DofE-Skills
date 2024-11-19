@@ -1,21 +1,15 @@
 {% extends "layout.html" %}
 
 {% block title %}
-Login
+Register
 {% endblock %}
 
 {% block main %}
-<form method="post" action="/login">
+<form method="post" action="/register">
     {{ form.hidden_tag() }}
+    {{ form.email }}
     {{ form.username }}
     {{ form.password }}
-
-    {% if error_message %}
-    <div class="error_message">
-        {{ error_message }}
-    </div>
-    {% endif %}
-
     {{ form.submit }}
 </form>
 {% endblock %}
