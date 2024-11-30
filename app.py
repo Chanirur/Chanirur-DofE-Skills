@@ -1,9 +1,9 @@
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, url_for, redirect, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, DecimalField 
 from wtforms.validators import InputRequired, Length, ValidationError, Email, Regexp
 
 from flask_migrate import Migrate
@@ -109,7 +109,6 @@ class RegisterForm(FlaskForm):
         if existing_email:
             raise ValidationError("Email is already registered")
 
-
 #form for logging in
 class LoginForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(
@@ -180,3 +179,12 @@ def logout():
 @login_required
 def dashboard():
     return render_template('dashboard.html')
+
+@app.route('/ajax', methods=['GET', 'POST'])
+def ajax():
+    if request.method == 'GET':
+        return render_template('onboarding.html')
+    elif request.method == 'POST':
+        data = {'this': 'works', 'nums': 13}
+        print('sending')
+        return jsonify(data)
