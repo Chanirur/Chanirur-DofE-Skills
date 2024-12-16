@@ -1,20 +1,24 @@
-const dataToSend = {
-    name: 'John Doe',
-    age: 30
-};
+const URL = '/onboarding'
 
-fetch('/ajax', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(dataToSend)
+let button = document.querySelector('#submitDetails');
+button.addEventListener('click', function () {
+    let firstname = document.querySelector('#firstname').value;
+    let surname = document.querySelector('#surname').value;
+    if (firstname && surname) {
+        let detailsData = {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                'name': 'details',
+                'firstname': firstname,
+                'surname': surname
+            })
+        }
+        fetch(URL, detailsData)
+            .then(response => response.json())
+            .catch(error => console.error('Error:', error))
+    }
 })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Response from backend:', data);
-        alert('Response: ' + data.message);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+

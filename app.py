@@ -59,6 +59,11 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(60), nullable=False)
 
+class Info(db.Model):
+    __tablename__ = 'info'
+
+    user_id = db.Column(db.Integer)
+
 # Custom validator to disallow SQL harmful characters
 def no_sql_harmful_chars(form, field):
     # List of characters typically associated with SQL injection or issues
@@ -180,11 +185,15 @@ def logout():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/ajax', methods=['GET', 'POST'])
-def ajax():
-    if request.method == 'GET':
-        return render_template('onboarding.html')
-    elif request.method == 'POST':
-        data = {'this': 'works', 'nums': 13}
-        print('sending')
-        return jsonify(data)
+@app.route('/onboarding', methods=['GET', 'POST'])
+def onboarding():
+    if request.method == 'POST':
+        data = request.get_json()
+        if data.get('name') == 'details':
+            print(data.get('firstname'), data.get('surname'))
+            response = {
+                'state': 'success',
+            }
+            return jsonify(response)
+        return('non name')
+    return render_template('onboarding.html')

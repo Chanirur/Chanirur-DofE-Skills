@@ -1,0 +1,21 @@
+{
+    "title": "Personal Details",
+    "name": "details",
+    "key-value": false,
+    "user_addable": false,
+    "content": [
+        {
+            "prompt": "Firstname",
+            "id": "firstname",
+            "type": "text",
+            "max": 20
+        },
+        {
+            "prompt": "Lastname",
+            "id": "lastname",
+            "type": "text",
+            "max": 20
+        }
+    ],
+    "next": true
+}
