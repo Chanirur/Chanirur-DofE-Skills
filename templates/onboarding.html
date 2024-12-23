@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onboarding</title>
+    <link rel="stylesheet" href="/static/css/onboarding.css">
 </head>
 <body>
     <h3 id="title"></h3>
     <div class="canvas">
         <div class="form">
             <label for="firstname">Firstname</label>
-            <input type="text" name="firstname" id="firstname">
+            <input type="text" name="firstname" id="firstname" required>
         </div>
         <div class="form">
             <label for="surname">Surname</label>
-            <input type="text" name="surname" id="surname">
+            <input type="text" name="surname" id="surname" required>
         </div>
-        <div>
-            <button id="submitDetails">Submit</button>
+        <div class="form">
+            <button type="button" id="submitDetails" class="btn">Submit</button>
         </div>
     </div>
-
+    
+      
+      
+    
     <script src="static/js/onboarding.js"></script>
 </body>
 </html>

@@ -1,0 +1,66 @@
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: transparent;
+    color: #F1F1F1;
+    border: 2px solid #2ECC71;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #2ECC71;
+}
+
+.hero-button .icon {
+    width: 24px;
+    height:24px;
+}
+
+body {
+    background-color: #2C2C2C;
+}
+
+.btn {
+    height: 8vh;
+    width: 15vw;
+    max-width: 200px;
+    max-height: 50px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #F1F1F1;
+    cursor: pointer;
+    background-color: #2ECC71;
+    border: none;
+    margin: 10px;
+    max-height: 20px;
+}
+
+label {
+    display: block;
+    color: #F1F1F1;
+}
+
+input[type="text"], input[type="number"] {
+    display: block;
+    height: 1vh;
+    width: 100%;
+    background-clip: padding-box;
+    padding: .6em 1em;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #F1F1F1;
+    background-color: #2C2C2C;
+    outline-color: #CCC;
+    border-radius: 6px;
+    background-color: #F1F1F1;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form {
+    width: 30%;
+}

@@ -59,11 +59,18 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(60), nullable=False)
 
-class Info(db.Model):
-    __tablename__ = 'info'
+    #link to table with expenses
+    expenses = db.relationship('Income', backref='user', lazy=True)
 
-    user_id = db.Column(db.Integer)
+class Income(db.Model):
+    __tablename__ = 'income'
 
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), nullable=False)
+    amount = db.Column(db.Integer, nullable=False)
+    type = db.Column(db.String(20), nullable=False)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 # Custom validator to disallow SQL harmful characters
 def no_sql_harmful_chars(form, field):
     # List of characters typically associated with SQL injection or issues
