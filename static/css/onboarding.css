@@ -103,8 +103,13 @@ h1, p {
     grid-column-end: 2;
 }
 
-.incomeRow, .expenseRow {
+.incomeRow, .expenseRow, #addIncome, #addExpense {
     display: flex;
     gap: 10px;
     margin: auto 50px;
+}
+
+#submitIncome {
+    grid-row: span(2,2);
+    grid-column: span(2,2);
 }

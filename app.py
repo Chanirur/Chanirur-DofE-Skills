@@ -68,7 +68,6 @@ class Income(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
     amount = db.Column(db.Integer, nullable=False)
-    type = db.Column(db.String(20), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 # Custom validator to disallow SQL harmful characters
@@ -194,13 +193,4 @@ def dashboard():
 
 @app.route('/onboarding', methods=['GET', 'POST'])
 def onboarding():
-    if request.method == 'POST':
-        data = request.get_json()
-        if data.get('name') == 'details':
-            print(data.get('firstname'), data.get('surname'))
-            response = {
-                'state': 'success',
-            }
-            return jsonify(response)
-        return('non name')
     return render_template('onboarding.html')
