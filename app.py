@@ -28,10 +28,10 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 #Ensures the use of only the CA for ssl
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-    'connect_args': {
+     'connect_args': {
         'ssl': ssl_context
     }
-}
+ }
 
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
@@ -59,11 +59,21 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(60), nullable=False)
 
-    #link to table with expenses
-    expenses = db.relationship('Income', backref='user', lazy=True)
+    #link to table with income and expenses
+    income = db.relationship('Income', backref='user', lazy=True)
+    expense = db.relationship('Expense', backref='user', lazy=True)
 
 class Income(db.Model):
     __tablename__ = 'income'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), nullable=False)
+    amount = db.Column(db.Integer, nullable=False)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+class Expense(db.Model):
+    __tablename__ = 'expense'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
@@ -193,4 +203,24 @@ def dashboard():
 
 @app.route('/onboarding', methods=['GET', 'POST'])
 def onboarding():
+    if request.method == 'POST':
+        data = request.get_json()
+        income = []
+        expense = []
+        for i in range(len(data.incomeSource)):
+            income.append({'source': data.incomeSource[i], 'amount': data.incomeAmount[i]})
+
+        for i in range(len(data.expenseSource)):
+            expense.append({'source': data.incomeSource[i], 'amount': data.incomeAmount[i]})
+
+        for i in income:
+            new_income = Income(name=i['source'], amount=i['amount'])
+            db.session.add(new_income)
+
+        for i in expense:
+            new_expense = Expense(name=i['source'], amount=i['amount'])
+            db.session.add(new_expense)
+
+        db.session.commit()
+        return redirect(url_for('dashboard'))
     return render_template('onboarding.html')

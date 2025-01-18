@@ -6,6 +6,22 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>Hello You are logged in and dashboard works properly.</h1>
+    <h1>Dashboard</h1>
+    <div id="incomes">
+        <table>
+            <thead>
+                <th>Source</th>
+                <th>Amount</th>
+            </thead>
+            <tbody>
+                {% for income in incomes %}
+                    <tr>
+                        <td>income['source']</td>
+                        <td>income['amount']</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
